@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlaskApp</title>
+    <h3> Exchange Rates of World Currencies</h3>
+</head>
+<body>
+    
+    <table border="1" width= 10000>
+        <tr>
+            <th></th>
+        {% for row in r[0] %}
+        <th style="width:500"> {{ row }}</th>
+        {% endfor %}
+        </tr>
+        {% for row in r %}
+        <form action="/update" method="post">
+        <tr>
+            <td><button type = "submit"> Update </button></td>
+            {% for c in row %}
+            <td style="width:100"> 
+            <input type="text" value="{{ row[c] }}" name = "{{ c }}">
+            </td>
+            {% endfor %}
+        </tr>
+    </form>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>
